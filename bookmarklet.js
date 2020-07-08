@@ -1,0 +1,1 @@
+javascript:(function(e,t)%7B(t=e.createElement("script")).src="https://yg-ics.junt58.dev/ics.min.js?1",t.charset="utf-8",e.getElementsByTagName("head")%5B0%5D.appendChild(t);%7D)(document);
