@@ -1,246 +1,264 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta name="description" content="ユメグラの所有チケットをics形式で出力することができるブックマークレットの紹介ページです。" />
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta property="og:title" content="Yumegra Ticket Exporter" />
-        <meta property="og:description" content="ユメグラの所有チケットをics形式で出力することができるブックマークレットの紹介ページです。" />
-        <meta property="og:url" content="https://yg-ics.junt58.dev/" />
-        <meta property="og:site_name" content="ユメグラチケットics出力" />
-        <meta property="og:image" content="https://yg-ics.junt58.dev/res/img/ogp_image.png" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content="@junT58" />
+    <meta name="description" content="ユメグラの所有チケットをics形式で出力することができるブックマークレットの紹介ページです。" />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="./res/icons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./res/icons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./res/icons/favicon-16x16.png">
-        <link rel="manifest" href="./res/icons/site.webmanifest">
-        <link rel="mask-icon" href="./res/icons/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="./res/icons/favicon.ico">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-config" content="./res/icons/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Yumegra Ticket Exporter" />
+    <meta property="og:description" content="ユメグラの所有チケットをics形式で出力することができるブックマークレットの紹介ページです。" />
+    <meta property="og:url" content="https://yg-ics.junt58.dev/" />
+    <meta property="og:site_name" content="ユメグラチケットics出力" />
+    <meta property="og:image" content="https://yg-ics.junt58.dev/res/img/ogp_image.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@junT58" />
 
-        <link href="https://yg-ics.junt58.dev/" hreflang="x-default" rel="alternate">
-        <link href="https://yg-ics.junt58.dev/" hreflang="ja" rel="alternate">
+    <link rel="apple-touch-icon" sizes="180x180" href="./res/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./res/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./res/icons/favicon-16x16.png">
+    <link rel="manifest" href="./res/icons/site.webmanifest">
+    <link rel="mask-icon" href="./res/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="./res/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="./res/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" media="print" onload="this.media='all'">
-        <style>
-            html {
-                overflow-x: hidden;
-            }
+    <link href="https://yg-ics.junt58.dev/" hreflang="x-default" rel="alternate">
+    <link href="https://yg-ics.junt58.dev/" hreflang="ja" rel="alternate">
 
-            body {
-                display: flex;
-                flex-flow: column;
-                min-height: 100vh;
-                overflow-x: hidden;
-            }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
+        media="print" onload="this.media='all'">
+    <style>
+        html {
+            overflow-x: hidden;
+        }
 
-            main {
-                flex: 1;
-                padding: 50px 10px;
-            }
-            h1 {
-                text-align: center;
-                font-size: 30px;
-            }
+        body {
+            display: flex;
+            flex-flow: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-            h2 {
-                font-size: 25px;
-                border-bottom: 1px solid #ddd;
-                padding: 10px 5px;
-            }
+        main {
+            flex: 1;
+            padding: 50px 10px;
+        }
 
-            a {
-                color: #0000ff;
-            }
+        h1 {
+            text-align: center;
+            font-size: 30px;
+        }
 
-            p {
-                padding: 5px 10px;
-            }
+        h2 {
+            font-size: 25px;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 5px;
+        }
 
-            .youtube__wrapper {
-                position: relative;
-                width: 100%;
-                height: 0;
-                padding-top: 10px;
-                padding-bottom: 57.75%;
-                overflow: hidden;
-                margin-bottom: 50px;
-                margin: 0 auto;
-                border-radius: 5px;
-            }
+        a {
+            color: #0000ff;
+        }
 
-            .youtube__wrapper--content, .youtube__wrapper--thumbnail {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
+        p {
+            padding: 5px 10px;
+        }
 
-            footer a {
-                color: deepskyblue;
-            }
+        .youtube__wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 10px;
+            padding-bottom: 57.75%;
+            overflow: hidden;
+            margin-bottom: 50px;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
 
-            img {
-                width: 100%;
-                border-radius: 5px;
-            }
+        .youtube__wrapper--content,
+        .youtube__wrapper--thumbnail {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
 
-            ol > li + li {
-                padding-top: 0.2em;
-            }
-        </style>
+        footer a {
+            color: deepskyblue;
+        }
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171740760-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
 
-            gtag('config', 'UA-171740760-1');
-        </script>
+        ol>li+li {
+            padding-top: 0.2em;
+        }
+    </style>
 
-        <script src="https://www.youtube.com/player_api" defer></script>
-        <script src="./res/js/main.js" defer></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" defer></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous" defer></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171740760-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-        <title>Yumegra Ticket Exporter</title>
-    </head>
-    <body>
-        <!-- Navbar -->
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="https://yg-ics.junt58.dev/">Yumegra Ticket Exporter</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="https://yg-ics.junt58.dev/">説明 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/junT58/Yumegra-ics/">ソースコード</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+        gtag('config', 'UA-171740760-1');
+    </script>
 
-        <!-- Detail -->
-        <main>
-            <div class="cotainer">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <h1>ユメグラチケット出力スクリプト</h1>
-                    <h2>概要</h2>
-                    <p>
-                        <a href="https://www.yumenographia.com/#/" target="_blank" rel="noopener noreferrer">ユメノグラフィア</a> の所有チケットの一覧をics形式で出力する非公式のスクリプトです。
-                    </p>
-                    <h2>使い方</h2>
-                    <p>
-                        <ol>
-                            <li>
-                                <a href="https://raw.githubusercontent.com/junT58/Yumegra-ics/master/bookmarklet.js">ブックマークレット</a>の中身をブックマークバーなどに登録する。
-                                (<a href="http://book.tsuhankensaku.com/hon/bookmarklet-googlechrome.html">参考</a>)<br>
-                                もしくは 下のボタンをブックマークバーにドラッグアンドドロップして追加<br>
-                                <a id="bookmarklet"><button class="btn btn-secondary" type="button">ユメグラチケットics出力</button></a>
-                            </li>
-                            <li>
-                                <a href="https://www.yumenographia.com/#/mypage" target="_blank" rel="noopener noreferrer">マイページ</a> にログインした状態でアクセスする
-                            </li>
-                            <li>
-                                1で追加したブックマークレットを実行する
-                            </li>
-                            <li>
-                                出力されたファイルをGoogleカレンダーなどにインポートする (<a href="https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=ja&oco=0">参考</a>)
-                            </li>
-                        </ol>
-                    </p>
-                    <p class="text-center">
-                        - モードについて -<br>
-                        <picture>
-                            <source media="(min-width: 1024px)" srcSet="./res/img/mode.webp" type="image/webp">
-                            <source media="(min-width: 1024px)" srcSet="./res/img/mode.png" type="image/png">
-                            <source media="(min-width: 768px)" srcSet="./res/img/mode-lg.webp" type="image/webp">
-                            <source media="(min-width: 768px)" srcset="./res/img/mode-lg.png" type="image/png">
-                            <source srcSet="./res/img/mode-sp.webp" type="image/webp">
-                            <img src="./res/img/mode-sp.png" decoding="async" alt="Mode Description">
-                        </picture>
-                    </p>
-                    <p class="text-center">
-                        - 動画 -<br>
-                        (クリックすると再生されます)<br>
-                        <div class="youtube__wrapper" onclick="yt_load();" aria-role="button">
-                            <picture>
-                                <source srcSet="./res/img/thumbnail.webp" type="image/webp">
-                                <img src="./res/img/thumbnail.jpg" class="youtube__wrapper--thumbnail" id="yt-thumb" decoding="async" alt="YouTube Thumbnail">
-                            </picture>
-                            <div id="yt-player" class="youtube__wrapper--content"></div>
-                        </div>
-                    </p>
-                    <h2>注意事項</h2>
-                    <p>
-                        本スクリプトは、非公式のユーザーが作成したスクリプトです。<br>
-                        このスクリプトを使用したことに起因する問題が発生した場合でも、制作者は責任を取ることが出来かねますのでご了承の上ご利用ください。
-                    </p>
-                    <h2>連絡先</h2>
-                    <p>
-                        Twitter: <a href="https://twitter.com/junT58">@junT58</a><br>
-                        Discord: junT58#7088<br>
-                        Mail: yg-ics(at)junt58.dev<br>
-                        &nbsp;&nbsp;(at) → @<br>
-                    </p>
-                    <h2>ソースコード</h2>
-                    <p>
-                        ソースコードは <a href="https://github.com/junT58/Yumegra-ics/">GitHub</a> で管理しています。<br>
-                        何かありましたらIssueの追加、Pull Requestの送信などお気軽にお送りください！
-                    </p>
-                    <h2>その他</h2>
-                    <p>
-                        初ブックマークレット作成のため、いろいろと至らぬ点などあるかと思います。<br>
-                        改善点などありましたら出来る範囲で対応したいと思っていますので、IssueやPull Request等お気軽にお送りください。
-                    </p>
-                    <h2>お願い</h2>
-                    <p>
-                        当方でも利用規約を一通り確認し、禁止事項に該当する項目はないと判断していますが、万が一禁止事項に該当する場合は、上記連絡先までご連絡いただけますと幸いです。<br>
-                        すぐに削除対応いたします。
-                    </p>
-                    <h2>開発環境</h2>
-                    <p>
-                        Windows 10 64-bit<br>
-                        Google Chrome 83.0.4103.106<br>
-                        Firefox 77.0.1<br>
-                        <br>
-                        macOS 10.15.3<br>
-                        Google Chrome 83.0.4103.116<br>
-                        Firefox 77.0.1<br>
-                        Safari 13.0.5<br>
-                        <br>
-                        iOS 13.5/14<br>
-                        Safari<br>
-                        <br>
-                        iPad OS 13.1.3<br>
-                        Safari<br>
-                    </p>
-                </div>
+    <script src="https://www.youtube.com/player_api" defer></script>
+    <script src="./res/js/main.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"
+        defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"
+        defer></script>
+
+    <title>Yumegra Ticket Exporter</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="https://yg-ics.junt58.dev/">Yumegra Ticket Exporter</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://yg-ics.junt58.dev/">説明 <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/junT58/Yumegra-ics/">ソースコード</a>
+                    </li>
+                </ul>
             </div>
-        </main>
+        </nav>
+    </header>
 
-        <!-- Copyright -->
-        <footer class="copyright py-4 text-center text-white bg-dark">
-            <div class="container">
-                <small>Copyright &copy; 2020 junT58</small><br>
-                <small>This site is powered by <a href="https://getbootstrap.com/" aria-label="Go to Bootstrap website."  target="_blank" rel="noopener noreferrer">Bootstrap</a></small>
+    <!-- Detail -->
+    <main>
+        <div class="cotainer">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1>ユメグラチケット出力スクリプト</h1>
+                <h2>概要</h2>
+                <p>
+                    <a href="https://www.yumenographia.com/#/" target="_blank" rel="noopener noreferrer">ユメノグラフィア</a>
+                    の所有チケットの一覧をics形式で出力する非公式のスクリプトです。
+                </p>
+                <h2>使い方</h2>
+                <p>
+                <ol>
+                    <li>
+                        <a
+                            href="https://raw.githubusercontent.com/junT58/Yumegra-ics/master/bookmarklet.js">ブックマークレット</a>の中身をブックマークバーなどに登録する。
+                        (<a href="http://book.tsuhankensaku.com/hon/bookmarklet-googlechrome.html">参考</a>)<br>
+                        もしくは 下のボタンをブックマークバーにドラッグアンドドロップして追加<br>
+                        <a id="bookmarklet"><button class="btn btn-secondary" type="button">ユメグラチケットics出力</button></a>
+                    </li>
+                    <li>
+                        <a href="https://www.yumenographia.com/mypage/tickets/" target="_blank"
+                            rel="noopener noreferrer">所持チケット一覧ページ</a> にログインした状態でアクセスする
+                    </li>
+                    <li>
+                        1で追加したブックマークレットを実行する
+                    </li>
+                    <li>
+                        出力されたファイルをGoogleカレンダーなどにインポートする (<a
+                            href="https://support.google.com/calendar/answer/37118?co=GENIE.Platform%3DDesktop&hl=ja&oco=0">参考</a>)
+                    </li>
+                </ol>
+                </p>
+                <p class="text-center">
+                    - モードについて -<br>
+                    <picture>
+                        <source media="(min-width: 1024px)" srcSet="./res/img/mode.webp" type="image/webp">
+                        <source media="(min-width: 1024px)" srcSet="./res/img/mode.png" type="image/png">
+                        <source media="(min-width: 768px)" srcSet="./res/img/mode-lg.webp" type="image/webp">
+                        <source media="(min-width: 768px)" srcset="./res/img/mode-lg.png" type="image/png">
+                        <source srcSet="./res/img/mode-sp.webp" type="image/webp">
+                        <img src="./res/img/mode-sp.png" decoding="async" alt="Mode Description">
+                    </picture>
+                </p>
+                <p class="text-center">
+                    - 動画 -<br>
+                    (クリックすると再生されます)<br>
+                <div class="youtube__wrapper" onclick="yt_load();" aria-role="button">
+                    <picture>
+                        <source srcSet="./res/img/thumbnail.webp" type="image/webp">
+                        <img src="./res/img/thumbnail.jpg" class="youtube__wrapper--thumbnail" id="yt-thumb"
+                            decoding="async" alt="YouTube Thumbnail">
+                    </picture>
+                    <div id="yt-player" class="youtube__wrapper--content"></div>
+                </div>
+                </p>
+                <h2>注意事項</h2>
+                <p>
+                    本スクリプトは、非公式のユーザーが作成したスクリプトです。<br>
+                    このスクリプトを使用したことに起因する問題が発生した場合でも、制作者は責任を取ることが出来かねますのでご了承の上ご利用ください。
+                </p>
+                <h2>連絡先</h2>
+                <p>
+                    Twitter: <a href="https://twitter.com/junT58">@junT58</a><br>
+                    Discord: junT58#7088<br>
+                    Mail: yg-ics(at)junt58.dev<br>
+                    &nbsp;&nbsp;(at) → @<br>
+                </p>
+                <h2>ソースコード</h2>
+                <p>
+                    ソースコードは <a href="https://github.com/junT58/Yumegra-ics/">GitHub</a> で管理しています。<br>
+                    何かありましたらIssueの追加、Pull Requestの送信などお気軽にお送りください！
+                </p>
+                <h2>その他</h2>
+                <p>
+                    初ブックマークレット作成のため、いろいろと至らぬ点などあるかと思います。<br>
+                    改善点などありましたら出来る範囲で対応したいと思っていますので、IssueやPull Request等お気軽にお送りください。
+                </p>
+                <h2>お願い</h2>
+                <p>
+                    当方でも利用規約を一通り確認し、禁止事項に該当する項目はないと判断していますが、万が一禁止事項に該当する場合は、上記連絡先までご連絡いただけますと幸いです。<br>
+                    すぐに削除対応いたします。
+                </p>
+                <h2>開発環境</h2>
+                <p>
+                    Windows 10 64-bit<br>
+                    Google Chrome 83.0.4103.106<br>
+                    Firefox 77.0.1<br>
+                    <br>
+                    macOS 10.15.3<br>
+                    Google Chrome 83.0.4103.116<br>
+                    Firefox 77.0.1<br>
+                    Safari 13.0.5<br>
+                    <br>
+                    iOS 13.5/14<br>
+                    Safari<br>
+                    <br>
+                    iPad OS 13.1.3<br>
+                    Safari<br>
+                </p>
             </div>
-        </footer>
-    </body>
+        </div>
+    </main>
+
+    <!-- Copyright -->
+    <footer class="copyright py-4 text-center text-white bg-dark">
+        <div class="container">
+            <small>Copyright &copy; 2020 junT58</small><br>
+            <small>This site is powered by <a href="https://getbootstrap.com/" aria-label="Go to Bootstrap website."
+                    target="_blank" rel="noopener noreferrer">Bootstrap</a></small>
+        </div>
+    </footer>
+</body>
+
 </html>
