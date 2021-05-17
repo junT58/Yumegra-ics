@@ -5,7 +5,7 @@
 [ホームページはこちら](https://yg-ics.junt58.dev/)
 
 ## 使い方
-1. [ブックマークレット](https://raw.githubusercontent.com/junT58/Yumegra-ics/master/bookmarklet.js)の中身をブックマークバーなどに登録する。  
+1. [ブックマークレット](https://raw.githubusercontent.com/junt1458/Yumegra-ics/master/bookmarklet.js)の中身をブックマークバーなどに登録する。  
 [参考(「手入力」による登録方法 )](http://book.tsuhankensaku.com/hon/bookmarklet-googlechrome.html)
 1. [マイページ](https://www.yumenographia.com/#/mypage) にログインした状態でアクセスする
 1. 1で追加したブックマークレットを実行する

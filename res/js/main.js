@@ -6,7 +6,6 @@ function get_bookmarklet() {
 
 var isYTLoaded = false;
 function yt_load(){
-    console.log("clicked.");
     if(!isYTLoaded) {
         isYTLoaded = true;
         var player = new YT.Player('yt-player', {
